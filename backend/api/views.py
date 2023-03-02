@@ -13,8 +13,10 @@ def api_home(request, *args, **kwargs):
         pass
 
     print(data)
-    # data["headers"] = request.headers
-    print(request.headers)
-    data["content_type"] = request.content_type
+    # data['headers'] = request.headers
+    # data['headers'] = json.dupms(request.headers)
+    json.dumps(dict(request.headers))
+    data['headers'] = dict(request.headers)
+    data['content_type'] = request.content_type
 
     return JsonResponse(data)

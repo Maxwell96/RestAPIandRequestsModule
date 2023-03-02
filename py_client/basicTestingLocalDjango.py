@@ -8,5 +8,5 @@ endpoint = "http://localhost:8000/api"
 # print(get_response.json()['message'])
 
 # Adding data with requests, Echo GET Data
-get_response = requests.get(endpoint, params={"abc": 123}, json={"query": "Hello world"})
+get_response = requests.get(endpoint, params={"abc": 123}, json={"query": "Hello world"}) # HTTP request
 print(get_response.json())
