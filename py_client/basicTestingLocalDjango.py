@@ -1,3 +1,4 @@
+"""This portion of code is used to solidify fundamental understanding"""
 import requests
 
 endpoint = "http://localhost:8000/api/"
