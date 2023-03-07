@@ -29,20 +29,30 @@ def api_home(request, *args, **kwargs):
 from django.http import JsonResponse
 import json
 from products.models import Product
+from django.forms.models import model_to_dict # Can be used to  
 
 def api_home(request, *args, **kwargs):
+    # 1. Getting a model instance
     model_data = Product.objects.all().order_by('?').first()
 
+    # 2. Converting the model instance to Python dict
     data = {}
     if model_data:
-        data['id'] = model_data.id # By default an id is added to every model so we can access it
-        data['title'] = model_data.title
-        data['content'] = model_data.content
-        data['price'] = model_data.price
+        # Approach 1: Populating the dictionary yourself
+        # This approach of converting model instance to dict is tedious since you have to do it one by one but it is very useful in some cases
+        # data['id'] = model_data.id # By default an id is added to every model so we can access it
+        # data['title'] = model_data.title
+        # data['content'] = model_data.content
+        # data['price'] = model_data.price
+
+        # Approach 2: Using the model_to_dict method
+        data = model_to_dict(model_data) 
+
 
         # What is happening?
         # 1. Model instance
         # 2. Turn to python dict
         # 3. Return JSON to my client
 
+    # Returning JSON to client
     return JsonResponse(data)
