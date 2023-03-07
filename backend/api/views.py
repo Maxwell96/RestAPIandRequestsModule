@@ -1,4 +1,4 @@
-"""This portion of code is used to solidify fundamental understanding"""
+"""This portion of code is used to solidify fundamental understanding
 from django.shortcuts import render
 from django.http import JsonResponse
 import json
@@ -22,5 +22,21 @@ def api_home(request, *args, **kwargs):
     data['params'] = dict(request.GET)
     data['headers'] = dict(request.headers)
     data['content_type'] = request.content_type
+
+    return JsonResponse(data)
+    """
+
+from django.http import JsonResponse
+import json
+from products.models import Product
+
+def api_home(request, *args, **kwargs):
+    model_data = Product.objects.all().order_by('?').first()
+
+    data = {}
+    if model_data:
+        data['title'] = model_data.title
+        data['content'] = model_data.content
+        data['price'] = model_data.price
 
     return JsonResponse(data)
