@@ -35,6 +35,7 @@ def api_home(request, *args, **kwargs):
 
     data = {}
     if model_data:
+        data['id'] = model_data.id # By default an id is added to every model so we can access it
         data['title'] = model_data.title
         data['content'] = model_data.content
         data['price'] = model_data.price
