@@ -40,4 +40,9 @@ def api_home(request, *args, **kwargs):
         data['content'] = model_data.content
         data['price'] = model_data.price
 
+        # What is happening?
+        # 1. Model instance
+        # 2. Turn to python dict
+        # 3. Return JSON to my client
+
     return JsonResponse(data)
